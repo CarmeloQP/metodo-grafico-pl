@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Aplicación para resolver problemas de programación lineal con el método gráfico, paso a paso.">
+<title>Método gráfico PL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<header class="band" style="padding-bottom:6px"><div class="wrap">
+ <h1>Resolvamos un problema de <u>programación lineal</u></h1>
+ <p class="sub">Método gráfico, paso a paso, como en el tablero. Escribe tu problema en el cuaderno y avanza por los pasos para ver cómo se llega a la respuesta.</p>
+ <nav class="steps" id="steps" aria-label="Pasos"></nav>
+</div></header>
+
+<main class="band" style="padding-top:18px"><div class="wrap app">
+ <section class="note" aria-label="Datos del problema">
+  <div class="sec">
+   <h3>1. ¿Qué decides?</h3>
+   <label for="n1">x₁ representa…</label><input id="n1" type="text" maxlength="30" placeholder="por ejemplo, mesas">
+   <label for="n2">x₂ representa…</label><input id="n2" type="text" maxlength="30" placeholder="por ejemplo, sillas">
+  </div>
+  <div class="sec">
+   <h3>2. ¿Qué buscas?</h3>
+   <div class="seg" role="group" aria-label="Maximizar o minimizar"><button id="bmax" type="button">Maximizar</button><button id="bmin" type="button">Minimizar</button></div>
+   <label for="zn">Z mide…</label><input id="zn" type="text" maxlength="30" placeholder="por ejemplo, ganancia">
+   <div class="row" style="margin-top:8px"><span class="v">Z =</span><input id="c1" type="number" step="any" inputmode="decimal" aria-label="Coeficiente de x1"><span class="v">x₁ +</span><input id="c2" type="number" step="any" inputmode="decimal" aria-label="Coeficiente de x2"><span class="v">x₂</span></div>
+  </div>
+  <div class="sec">
+   <h3>3. ¿Qué te limita?</h3>
+   <div id="cons"></div>
+   <button class="add" id="add" type="button">+ Agregar restricción</button>
+   <label class="chk"><input id="nn" type="checkbox"> No negatividad: x₁, x₂ ≥ 0</label>
+  </div>
+  <div class="sec" style="margin:0">
+   <h3>¿Sin ideas? Prueba uno</h3>
+   <div class="presets" id="presets"></div>
+  </div>
+ </section>
+
+ <section class="board" aria-label="Tablero">
+  <div class="frame"><div class="fig"><svg id="svg" role="img" aria-label="Gráfica del método gráfico"></svg></div></div>
+  <div class="explain" id="explain" aria-live="polite"></div>
+ </section>
+</div></main>
+
+<section class="band" style="border-top:2px dashed rgba(244,241,232,.25)"><div class="wrap bottom">
+ <div><h2>Tabla de vértices</h2><div class="scroll" id="vt"></div></div>
+ <div class="sticky" id="answer"></div>
+</div></section>
+
+<script src="js/solver.js"></script>
+<script src="js/grafica.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
